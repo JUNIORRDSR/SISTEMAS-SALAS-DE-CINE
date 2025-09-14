@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema Bancario - Administrar Cajeros</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilos/cajeros.css">
+  
+   
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="header-brand">
+            <div class="brand-icon">
+              <span class="icon-placeholder"> <img src="img/logo.svg"></span>
+            </div>
+            <div class="brand-text">
+              <h5>Sistema Bancario</h5>
+              <small>Panel de Administración</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="header-actions justify-content-end">
+            <a href="#" class="btn-back">
+              <span class="icon-placeholder"> <img src="img/arrow.svg" > </span>
+              Atrás
+            </a>
+            <div class="notification-icon">
+              <span class="icon-placeholder"> <img src="img/campanita.svg"></span>
+            </div>
+            <div class="profile-icon">
+              <span class="icon-placeholder"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="page-header">
+            <h2>Administrar Cajeros</h2>
+            <p>Gestiona los cajeros del sistema bancario</p>
+          </div>
+        </div>
+        <div class="col-md-4 text-end">
+          <button class="btn-create" id="openModalBtn">
+            <span class="icon-placeholder"> <img src="img/agregar.svg"> </span>
+            Crear Cajero
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabla de Cajeros -->
+      <div class="row">
+        <div class="col-12">
+          <div class="table-section">
+            <div class="table-header">
+              <h5>Lista de Cajeros</h5>
+              <div class="search-filter">
+                <input type="text" class="search-input" placeholder="Buscar cajero...">
+                <button class="filter-btn">
+                  <span class="icon-placeholder">      </span>
+                </button>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table custom-table" id="cajerosTable">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Usuario</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+               <tbody>
+  
+   
+    <td>
+      <div class="action-buttons">
+        <button class="ver"><img src="img/ver.svg" alt="Ver"></button>
+        <button class="edit"><img src="img/editar.svg" alt="Editar"></button>
+        <button class="eliminar"><img src="img/eliminar.svg" alt="Eliminar"></button>
+      </div>
+    </td>
+  
+
+
+</tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Modal para agregar cajero -->
+  <div class="modal-overlay" id="cajeroModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h5>Agregar Cajero</h5>
+        <button class="close-btn" id="closeModalBtn">&times;</button>
+      </div>
+      <form id="cajeroForm">
+        <div class="form-group">
+          <label for="cajeroId">ID Cajero</label>
+          <input type="text" id="cajeroId" required>
+        </div>
+        <div class="form-group">
+          <label for="Nombre">Nombre</label>
+          <input type="text" id="nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="usuario">Usuario</label>
+          <input type="text" id="usuario" required>
+        </div>
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <select id="estado" required>
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Inactivo</option>
+          </select>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn-cancel" id="cancelBtn">Cancelar</button>
+          <button type="submit" class="btn-save">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const openModalBtn = document.getElementById("openModalBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const cancelBtn = document.getElementById("cancelBtn");
+    const cajeroModal = document.getElementById("cajeroModal");
+    const cajeroForm = document.getElementById("cajeroForm");
+    const cajerosTable = document.getElementById("cajerosTable").querySelector("tbody");
+
+    // Abrir modal
+    openModalBtn.addEventListener("click", () => {
+      cajeroModal.style.display = "flex";
+    });
+
+    // Cerrar modal
+    closeModalBtn.addEventListener("click", () => {
+      cajeroModal.style.display = "none";
+    });
+    cancelBtn.addEventListener("click", () => {
+      cajeroModal.style.display = "none";
+    });
+
+    // Guardar cajero
+    cajeroForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = document.getElementById("cajeroId").value;
+      const nombre = document.getElementById("nombre").value;
+      const usuario = document.getElementById("usuario").value;
+      const estado = document.getElementById("estado").value;
+
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>#${id}</td>
+        <td class="text-muted">${nombre}</td>
+        <td class="text-muted">${usuario}</td>
+        <td>
+          <span class="status-badge ${estado === "Activo" ? "status-active" : "status-inactive"}">
+            <span class="status-dot"></span> ${estado}
+          </span>
+        </td>
+        <td>
+          <div class="action-buttons">
+            <button class="action-btn btn-view"><span class="icon-placeholder"></span></button>
+            <button class="action-btn btn-edit"><span class="icon-placeholder"></span></button>
+            <button class="action-btn btn-delete"><span class="icon-placeholder"></span></button>
+          </div>
+        </td>
+      `;
+      cajerosTable.appendChild(row);
+
+      // Limpiar y cerrar modal
+      cajeroForm.reset();
+      cajeroModal.style.display = "none";
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
