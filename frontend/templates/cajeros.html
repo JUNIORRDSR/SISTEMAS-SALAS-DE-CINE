@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sistema Bancario - Administrar Cajeros</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="estilos/cajeros.css">
-  
-   
+  <link rel="stylesheet" href="../css/cajeros.css">
+
+
 </head>
+
 <body>
   <!-- Header -->
   <header class="header">
@@ -17,7 +19,7 @@
         <div class="col-md-6">
           <div class="header-brand">
             <div class="brand-icon">
-              <span class="icon-placeholder"> <img src="img/logo.svg"></span>
+              <span class="icon-placeholder"> <img src="../assets/img/logo.svg"></span>
             </div>
             <div class="brand-text">
               <h5>Sistema Bancario</h5>
@@ -28,11 +30,11 @@
         <div class="col-md-6">
           <div class="header-actions justify-content-end">
             <a href="#" class="btn-back">
-              <span class="icon-placeholder"> <img src="img/arrow.svg" > </span>
+              <span class="icon-placeholder"> <img src="../assets/img/arrow.svg"> </span>
               Atrás
             </a>
             <div class="notification-icon">
-              <span class="icon-placeholder"> <img src="img/campanita.svg"></span>
+              <span class="icon-placeholder"> <img src="../assets/img/campanita.svg"></span>
             </div>
             <div class="profile-icon">
               <span class="icon-placeholder"></span>
@@ -54,7 +56,7 @@
         </div>
         <div class="col-md-4 text-end">
           <button class="btn-create" id="openModalBtn">
-            <span class="icon-placeholder"> <img src="img/agregar.svg"> </span>
+            <span class="icon-placeholder"> <img src="../assets/img/agregar.svg"> </span>
             Crear Cajero
           </button>
         </div>
@@ -69,7 +71,7 @@
               <div class="search-filter">
                 <input type="text" class="search-input" placeholder="Buscar cajero...">
                 <button class="filter-btn">
-                  <span class="icon-placeholder">      </span>
+                  <span class="icon-placeholder"> </span>
                 </button>
               </div>
             </div>
@@ -84,20 +86,20 @@
                     <th>Acciones</th>
                   </tr>
                 </thead>
-               <tbody>
-  
-   
-    <td>
-      <div class="action-buttons">
-        <button class="ver"><img src="img/ver.svg" alt="Ver"></button>
-        <button class="edit"><img src="img/editar.svg" alt="Editar"></button>
-        <button class="eliminar"><img src="img/eliminar.svg" alt="Eliminar"></button>
-      </div>
-    </td>
-  
+                <tbody>
 
 
-</tbody>
+                  <td>
+                    <div class="action-buttons">
+                      <button class="ver"><img src="../assets/img/ver.svg" alt="Ver"></button>
+                      <button class="edit"><img src="../assets/img/editar.svg" alt="Editar"></button>
+                      <button class="eliminar"><img src="../assets/img/eliminar.svg" alt="Eliminar"></button>
+                    </div>
+                  </td>
+
+
+
+                </tbody>
 
               </table>
             </div>
@@ -199,4 +201,5 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
