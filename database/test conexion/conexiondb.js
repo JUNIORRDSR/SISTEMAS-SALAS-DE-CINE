@@ -18,12 +18,28 @@ conexion.connect((error) =>{
     }
 })
 
-// Prueba de consulta para confirmar el funcionamiento
-conexion.query('select * from Clientes;', (error,result) =>{
+
+// Inserción correcta usando los campos reales de la tabla
+conexion.query('INSERT INTO Clientes (nombre, email, telefono, tipo) VALUES ("Juan Perez", "juan.perez@example.com", "1234567890", "NORMAL")', (error, result) => {
+    if (error) {
+        console.log('Error en la inserción:', error)
+    } else {
+        console.log('✅ Inserción exitosa!')
+        console.log('ID del cliente insertado:', result.insertId)
+    }
+})
+
+// Luego vamos a ver qué datos hay en la tabla
+conexion.query('SELECT * FROM Clientes;', (error,result) =>{
     if(error){
-        console.log(error)
+        console.log('Error al consultar clientes:', error)
     }else{
-        console.log(result)
+        console.log('Datos actuales en la tabla Clientes:')
+        if(result.length > 0) {
+            console.table(result)
+        } else {
+            console.log('No hay datos en la tabla')
+        }
     }
 })
 
