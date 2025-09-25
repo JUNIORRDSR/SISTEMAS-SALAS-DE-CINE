@@ -1,12 +1,13 @@
-const env = require('dotenv').config();
+const path = require('path');
+require('dotenv').config();
 const mysql = require('mysql2')
 
 // Establecer variables de conexion para la base de dato
 const conexion = mysql.createConnection({
-    host: env.parsed['HOST_NAME'],
-    database: env.parsed['MYSQL_DATABASE'],
-    user: env.parsed['MYSQL_USER'],
-    password: env.parsed['MYSQL_ROOT_PASSWORD']
+    host: process.env.HOST_NAME,
+    database: process.env.MYSQL_DATABASE,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_ROOT_PASSWORD
 })
 
 // Intento de conexion al servidor
@@ -18,7 +19,7 @@ conexion.connect((error) =>{
     }
 })
 
-
+/* 
 // Inserción correcta usando los campos reales de la tabla
 conexion.query('INSERT INTO Clientes (nombre, email, telefono, tipo) VALUES ("Juan Perez", "juan.perez@example.com", "1234567890", "NORMAL")', (error, result) => {
     if (error) {
@@ -29,8 +30,8 @@ conexion.query('INSERT INTO Clientes (nombre, email, telefono, tipo) VALUES ("Ju
     }
 })
 
-// Luego vamos a ver qué datos hay en la tabla
-conexion.query('SELECT * FROM Clientes;', (error,result) =>{
+//Luego vamos a ver qué datos hay en la tabla
+conexion.query('SELECT * FROM Usuarios WHERE rol="CAJERO";', (error,result) =>{
     if(error){
         console.log('Error al consultar clientes:', error)
     }else{
@@ -41,6 +42,10 @@ conexion.query('SELECT * FROM Clientes;', (error,result) =>{
             console.log('No hay datos en la tabla')
         }
     }
-})
+})  */
 
-conexion.end()
+
+// Exportar la conexión para usar en otros módulos
+
+module.exports = conexion;
+conexion.end();
