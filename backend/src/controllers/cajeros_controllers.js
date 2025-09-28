@@ -9,7 +9,7 @@ const conexion = mysql.createConnection({
 });
 
 
-// Crear cajero
+// Obtener todos los cajeros
 const getAllCajeros = (req, res) => {
   conexion.query('SELECT * FROM Usuarios WHERE rol="CAJERO";', (error, results) => {
     if (error) {
