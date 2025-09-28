@@ -1,0 +1,25 @@
+{
+  "name": "sistemas-salas-de-cine",
+  "version": "1.0.0",
+  "description": "Sistema de gesion de salas de cine; proyecto web",
+  "homepage": "https://github.com/JUNIORRDSR/SISTEMAS-SALAS-DE-CINE#readme",
+  "bugs": {
+    "url": "https://github.com/JUNIORRDSR/SISTEMAS-SALAS-DE-CINE/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JUNIORRDSR/SISTEMAS-SALAS-DE-CINE.git"
+  },
+  "license": "ISC",
+  "author": "JUNIORRDSR",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.0"
+  }
+}
