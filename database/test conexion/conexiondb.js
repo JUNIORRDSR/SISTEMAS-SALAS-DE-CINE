@@ -10,19 +10,19 @@ const conexion = mysql.createConnection({
 })
 
 // Intento de conexion al servidor
-conexion.connect((error) =>{
-    if(error){
+conexion.connect((error) => {
+    if (error) {
         console.log(error)
-    }else{
+    } else {
         console.log('CONEXION EXITOSA')
     }
 })
 
 // Prueba de consulta para confirmar el funcionamiento
-conexion.query('select * from Clientes;', (error,result) =>{
-    if(error){
+conexion.query('select * from Clientes;', (error, result) => {
+    if (error) {
         console.log(error)
-    }else{
+    } else {
         console.log(result)
     }
 })
