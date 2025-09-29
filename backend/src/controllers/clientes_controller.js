@@ -1,13 +1,6 @@
 const mysql = require('mysql2');
-const env = require('dotenv').config();
+const conexion = require('../../../database/conexion_db');
 
-
-const conexion = mysql.createConnection({
-    host: env.parsed['HOST_NAME'],
-    database: env.parsed['MYSQL_DATABASE'],
-    user: env.parsed['MYSQL_USER'],
-    password: env.parsed['MYSQL_ROOT_PASSWORD']
-})
 const getAllClientes = (req, res) => {
     conexion.query('SELECT * FROM Clientes;', (error, results) => {
         // console.log('Consulta ejecutada por: ', req);
@@ -69,5 +62,6 @@ const deleteCliente = (req, res) => {
         }
     });
 }
+
 
 module.exports = { getAllClientes, createCliente, updateCliente, deleteCliente };

@@ -1,15 +1,7 @@
 const mysql = require('mysql2');
-const env = require('dotenv').config();
+const conexion = require('../../../database/conexion_db');
 
-const conexion = mysql.createConnection({
-  host: process.env.HOST_NAME,
-  database: process.env.MYSQL_DATABASE,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_ROOT_PASSWORD
-});
-
-
-// Obtener todos los cajeros
+// Obtener todos los cajeros (rol CAJERO)
 const getAllCajeros = (req, res) => {
   conexion.query('SELECT * FROM Usuarios WHERE rol="CAJERO";', (error, results) => {
     if (error) {
@@ -21,9 +13,10 @@ const getAllCajeros = (req, res) => {
   });
 };
 
+// POST crear un nuevo cajero
 const createCajero = (req, res) => {
-  const { nombre, usuario, contraseña, rol, fecha_creacion } = req.body;
-  conexion.query('INSERT INTO Usuarios (nombre, usuario, contraseña, rol, fecha_creacion) VALUES (?, ?, ?, ?, ?)', [nombre, usuario, contraseña, rol, fecha_creacion], (error, results) => {
+  const { nombre, usuario, contrasena, rol } = req.body;
+  conexion.query('INSERT INTO Usuarios (nombre, usuario, contrasena, rol) VALUES (?, ?, ?, ?)', [nombre, usuario, contrasena, rol], (error, results) => {
     if (error) {
       console.error('Error al crear cajero:', error);
       return res.status(500).json({ error: 'Error al crear cajero' });
@@ -32,6 +25,8 @@ const createCajero = (req, res) => {
   });
 };
 
+
+//PUT actualizar un cajero existente
 const updateCajero = (req, res) => {
 
   const { id } = req.params;
@@ -40,8 +35,8 @@ const updateCajero = (req, res) => {
     console.error('ID inválido:', id);
     return res.status(400).send('ID inválido');
   }
-  const { nombre, usuario, contraseña, rol, fecha_creacion } = req.body;
-  conexion.query('UPDATE Usuarios SET nombre = ?, usuario = ?, contraseña = ?, rol = ?, fecha_creacion = ? WHERE id = ?', [nombre, usuario, contraseña, rol, fecha_creacion, id_parse], (error, results) => {
+  const { nombre, usuario, contrasena, rol } = req.body;
+  conexion.query('UPDATE Usuarios SET nombre = ?, usuario = ?, contrasena = ?, rol = ? WHERE id_usuario = ?', [nombre, usuario, contrasena, rol, id_parse], (error, results) => {
     if (error) {
       console.error('Error al actualizar cajero:', error);
       return res.status(500).json({ error: 'Error al actualizar cajero' });
@@ -50,6 +45,8 @@ const updateCajero = (req, res) => {
   });
 };
 
+
+// DELETE eliminar un cajero existente
 const deleteCajero = (req, res) => {
   const { id } = req.params;
   const id_parse = parseFloat(id);
@@ -57,7 +54,7 @@ const deleteCajero = (req, res) => {
     console.error('ID inválido:', id);
     return res.status(400).send('ID inválido');
   }
-  conexion.query('DELETE FROM Usuarios WHERE id = ?', [id_parse], (error, results) => {
+  conexion.query('DELETE FROM Usuarios WHERE id_usuario = ?', [id_parse], (error, results) => {
     if (error) {
       console.error('Error al eliminar cajero:', error);
       return res.status(500).json({ error: 'Error al eliminar cajero' });

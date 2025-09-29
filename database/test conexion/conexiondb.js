@@ -19,7 +19,7 @@ conexion.connect((error) => {
 })
 
 // Prueba de consulta para confirmar el funcionamiento
-conexion.query('select * from Clientes;', (error, result) => {
+conexion.query('select * from Usuarios;', (error, result) => {
     if (error) {
         console.log(error)
     } else {
