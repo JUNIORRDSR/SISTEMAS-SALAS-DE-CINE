@@ -33,6 +33,9 @@ CREATE TABLE `Peliculas` (
 	`genero` VARCHAR(50),
 	`duracion` INTEGER,
 	`clasificacion` VARCHAR(10),
+	`sinopsis` TEXT,
+	`director` VARCHAR(100),
+	`actores` TEXT,
 	`estado` ENUM('EN_CARTELERA', 'RETIRADA') DEFAULT 'EN_CARTELERA',
 	PRIMARY KEY(`id_pelicula`)
 );

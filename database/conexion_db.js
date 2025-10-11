@@ -24,7 +24,7 @@ pool.getConnection((error, connection) => {
 });
 
 // Prueba de consulta para confirmar el funcionamiento
-pool.query('select * from Usuarios WHERE rol = "CAJERO";', (error, result) => {
+pool.query('select * from Peliculas;', (error, result) => {
     if (error) {
         console.log(error);
     } else {
@@ -32,4 +32,4 @@ pool.query('select * from Usuarios WHERE rol = "CAJERO";', (error, result) => {
     }
 });
 
-module.exports = pool;
+module.exports = pool.promise();
