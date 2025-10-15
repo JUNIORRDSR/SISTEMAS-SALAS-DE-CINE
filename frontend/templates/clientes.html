@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Administrar Clientes VIP</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/clientes.css">
+  
+
+
+ 
+</head>
+<body class="bg-light">
+
+  <!-- TOPBAR / HEADER -->
+ <header class="header">
+        <div class="header-left">
+            <div class="icon-box">
+                <span class="icon-placeholder"> <img src="../assets/img/cliente.svg"></span>
+            </div>
+            <div class="header-text">
+                <h1 class="header-title">Administrar Clientes VIP</h1>
+                <p class="header-subtitle">Gestión completa de clientes premium</p>
+            </div>
+        </div>
+        <div class="header-right">
+            <button class="back-button">Atrás</button>
+           
+        </div>
+    </header>
+
+  <main class="container py-4">
+
+    <!-- Barra de acciones: Crear, editar masivo, eliminar masivo, ver -->
+    <div class="card card-panel mb-4 shadow-sm p-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalCliente" id="btnCrear">
+            <span class="me-2"><!-- <img src="../assets/img/añadir.svg"> --></span>
+            Crear Cliente VIP
+          </button>
+
+         
+        </div>
+
+        <!-- Buscador -->
+        <div class="search-wrap d-flex align-items-center">
+          <input id="buscador" class="form-control me-2" type="search" placeholder="Buscar clientes..." style="width:300px">
+          <button class="btn btn-light" id="btnFiltro" title="Filtros">
+            <span class="icon-placeholder"> <img src="../assets/img/filtroo.svg.svg"></span>
+            
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla de clientes -->
+    <div class="card shadow-sm card-panel">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h5 class="mb-0">Lista de Clientes VIP</h5>
+          <small class="text-muted" id="info-total">Mostrando 0 resultados</small>
+        </div>
+
+        <div class="table-responsive">
+          <table class="table align-middle" id="tablaClientes">
+            <thead class="table-light">
+              <tr class="text-center">
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Estado</th>
+                <th style="width:170px">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- filas dinámicas -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- paginación (ficticia) -->
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <small id="rango-resultados">Mostrando resultados</small>
+          <nav>
+            <ul class="pagination pagination-sm mb-0" id="paginacion">
+           
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modal Crear / Editar Cliente -->
+  <div class="modal fade" id="modalCliente" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="tituloModal">Crear Cliente VIP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formCliente" novalidate>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input id="nombre" type="text" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="correo" class="form-label">Correo</label>
+              <input id="correo" type="email" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="telefono" class="form-label">Teléfono</label>
+              <input id="telefono" type="tel" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="estado" class="form-label">Estado</label>
+              <select id="estado" class="form-select" required>
+                <option value="Activo">Activo</option>
+                <option value="Pendiente">Pendiente</option>
+                <option value="Inactivo">Inactivo</option>
+              </select>
+            </div>
+
+            <div class="text-end">
+              <button type="submit" class="btn btn-success" id="btnGuardar">Guardar</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap + JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/clientes.js"></script>
+</body>
+</html>
