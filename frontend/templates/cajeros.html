@@ -69,9 +69,9 @@
             <div class="table-header">
               <h5>Lista de Cajeros</h5>
               <div class="search-filter">
-                <input type="text" class="search-input" placeholder="Buscar cajero...">
+                <input type="text" id="searchInput" class="search-input" placeholder="Buscar cajero...">
                 <button class="filter-btn">
-                  <span class="icon-placeholder"> </span>
+                  <span class="icon-placeholder"> <img src="../assets/img/filtroo.svg"> </span>
                 </button>
               </div>
             </div>
@@ -79,9 +79,10 @@
               <table class="table custom-table" id="cajerosTable">
                 <thead>
                   <tr>
-                    <th>ID</th>
                     <th>Nombre</th>
                     <th>Usuario</th>
+                     <th>Correo</th>
+                     <th>Contraseña</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                   </tr>
@@ -106,16 +107,20 @@
       </div>
       <form id="cajeroForm">
         <div class="form-group">
-          <label for="cajeroId">ID Cajero</label>
-          <input type="text" id="cajeroId" required>
-        </div>
-        <div class="form-group">
           <label for="Nombre">Nombre</label>
           <input type="text" id="nombre" required>
         </div>
         <div class="form-group">
           <label for="usuario">Usuario</label>
           <input type="text" id="usuario" required>
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo Electronico</label>
+          <input type="text" id="correo" required>
+        </div>
+          <div class="form-group">
+          <label for="contraseña">Contraseña</label>
+          <input type="password" id="contraseña" required>
         </div>
         <div class="form-group">
           <label for="estado">Estado</label>
@@ -140,9 +145,11 @@
       <button class="close-btn" id="closeViewBtn">&times;</button>
     </div>
     <div class="modal-body">
-      <p><strong>ID:</strong> <span id="viewId"></span></p>
       <p><strong>Nombre:</strong> <span id="viewNombre"></span></p>
       <p><strong>Usuario:</strong> <span id="viewUsuario"></span></p>
+      <p><strong>Correo:</strong> <span id="viewCorreo"></span></p>
+      <p><strong>Contraseña:</strong> <span id="viewContraseña"></span></p>
+
       <p><strong>Estado:</strong> <span id="viewEstado"></span></p>
     </div>
     <div class="modal-footer">

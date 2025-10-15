@@ -10,7 +10,7 @@ let editingRow = null; // Variable para saber si estoy editando
 // Abrir modal
 openModalBtn.addEventListener("click", () => {
   cajeroModal.style.display = "flex";
-  editingRow = null; // siempre que abro con "crear", me aseguro de no estar editando
+  editingRow = null; 
   cajeroForm.reset();
 });
 
@@ -21,17 +21,19 @@ cancelBtn.addEventListener("click", () => cajeroModal.style.display = "none");
 // Guardar cajero (crear o editar)
 cajeroForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const id = document.getElementById("cajeroId").value;
   const nombre = document.getElementById("nombre").value;
   const usuario = document.getElementById("usuario").value;
+  const correo = document.getElementById("correo").value;
+  const contraseña= document.getElementById("contraseña").value;
   const estado = document.getElementById("estado").value;
 
   if (editingRow) {
     // Editar fila existente
-    editingRow.cells[0].textContent = "#" + id;
-    editingRow.cells[1].textContent = nombre;
-    editingRow.cells[2].textContent = usuario;
-    editingRow.cells[3].innerHTML = `
+    editingRow.cells[0].textContent = nombre;
+    editingRow.cells[1].textContent = usuario;
+    editingRow.cells[2].textContent = correo;
+    editingRow.cells[3].textContent = contraseña;
+    editingRow.cells[4].innerHTML = `
       <span class="status-badge ${estado === "Activo" ? "status-active" : "status-inactive"}">
         <span class="status-dot"></span> ${estado}
       </span>
@@ -41,9 +43,10 @@ cajeroForm.addEventListener("submit", (e) => {
     // Crear nueva fila
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>#${id}</td>
       <td class="text-muted">${nombre}</td>
       <td class="text-muted">${usuario}</td>
+      <td class="text-muted">${correo}</td>
+     <td class="text-muted">${contraseña}</td>
       <td>
         <span class="status-badge ${estado === "Activo" ? "status-active" : "status-inactive"}">
           <span class="status-dot"></span> ${estado}
@@ -63,17 +66,21 @@ cajeroForm.addEventListener("submit", (e) => {
     const btnEdit = row.querySelector(".btn-edit");
     const btnDelete = row.querySelector(".btn-delete");
 
- btnView.addEventListener("click", () => {
-  const currentId = row.cells[0].textContent.replace("#", "");
-  const currentNombre = row.cells[1].textContent;
-  const currentUsuario = row.cells[2].textContent;
-  const currentEstado = row.cells[3].innerText.trim();
+ //boton vista
+  btnView.addEventListener("click", () => {
+  const currentNombre = row.cells[0].textContent;
+  const currentUsuario = row.cells[1].textContent;
+  const currentCorreo = row.cells[2].textContent;
+  const currentContraseña= row.cells[3].textContent; 
+  const currentEstado = row.cells[4].innerText.trim();
 
   // Llenar modal de vista
-  document.getElementById("viewId").textContent = currentId;
   document.getElementById("viewNombre").textContent = currentNombre;
   document.getElementById("viewUsuario").textContent = currentUsuario;
+  document.getElementById("viewCorreo").textContent = currentCorreo;
+  document.getElementById("viewContraseña").textContent = currentContraseña;
   document.getElementById("viewEstado").textContent = currentEstado;
+ 
 
   // Mostrar modal
   document.getElementById("viewModal").style.display = "flex";
@@ -88,14 +95,14 @@ document.getElementById("closeViewFooterBtn").addEventListener("click", () => {
   document.getElementById("viewModal").style.display = "none";
 });
 
-
-
-
+//boton editar
     btnEdit.addEventListener("click", () => {
   
-      document.getElementById("cajeroId").value = row.cells[0].textContent.replace("#", "");
-      document.getElementById("nombre").value = row.cells[1].textContent;
-      document.getElementById("usuario").value = row.cells[2].textContent;
+
+      document.getElementById("nombre").value = row.cells[0].textContent;
+      document.getElementById("usuario").value = row.cells[1].textContent;
+      document.getElementById("correo").value = row.cells[2].textContent;
+       document.getElementById("contraseña").value = row.cells[1].textContent;
       document.getElementById("estado").value = estado;
 
       cajeroModal.style.display = "flex";
@@ -115,4 +122,32 @@ document.getElementById("closeViewFooterBtn").addEventListener("click", () => {
   // Limpiar y cerrar modal
   cajeroForm.reset();
   cajeroModal.style.display = "none";
+
 });
+
+// busqueda de cajeros
+document.getElementById("searchInput").addEventListener("keyup", function() {
+  const filter = this.value.toLowerCase();
+  const table = document.getElementById("cajerosTable");
+  const rows = table.getElementsByTagName("tr");
+
+  // Recorremos todas las filas menos la cabecera
+  for (let i = 1; i < rows.length; i++) {
+    const row = rows[i];
+    const cells = row.getElementsByTagName("td");
+    let match = false;
+
+    // Recorre cada celda de la fila
+    for (let j = 0; j < cells.length; j++) {
+      const cellText = cells[j].textContent.toLowerCase();
+      if (cellText.includes(filter)) {
+        match = true;
+        break;
+      }
+    }
+
+    // Muestra u oculta la fila según haya coincidencia
+    row.style.display = match ? "" : "none";
+  }
+});
+
