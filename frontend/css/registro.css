@@ -1,0 +1,50 @@
+
+  body {
+      background-color: #f4f6fb;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .card {
+      border: none;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #005bff, #1e90ff);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #0046c2, #1574f6);
+    }
+
+    .icon-container {
+      background-color: #005bff;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+    }
+
+    .form-control:focus {
+      border-color: #005bff;
+      box-shadow: 0 0 0 0.15rem rgba(0,91,255,0.25);
+    }
+
+    .toggle-password {
+      cursor: pointer;
+    }
+
+    .system-status {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .system-status span {
+      color: #00c853;
+    }

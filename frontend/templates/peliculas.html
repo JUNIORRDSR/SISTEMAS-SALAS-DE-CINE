@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrar Películas - CineAdmin</title>
+
+    <!-- Enlace a Bootstrap (estilos predeterminados) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/peliculas.css">
+</head>
+<body>
+    <!-- Barra superior con logo y botón de regreso -->
+    <div class="top-bar">
+        <div class="logo-section">
+            <!-- Logo del sistema -->
+            <div class="logo-icon"> <img src="../assets/img/iconologin.svg"></div>
+            <div class="logo-text">CineAdmin</div>
+        </div>
+        <div class="top-actions">
+            <!-- Botón para volver al dashboard -->
+            <button class="btn-back" onclick="window.location.href='dashboardadmin.html'" <img src="../assets/img/arrow.svg">>Atrás</button>
+            <!-- Espacio para mostrar el avatar del usuario -->
+            <div class="user-avatar"></div>
+        </div>
+    </div>
+
+    <!-- Contenedor principal del contenido -->
+    <div class="main-content">
+        <!-- Encabezado de la página -->
+        <div class="page-header">
+            <h1>Administrar Películas</h1>
+            <p>Gestiona el catálogo de películas del sistema</p>
+        </div>
+
+        <!-- Botones de acción principales -->
+        <div class="action-buttons">
+            <!-- Botón para abrir el modal de creación -->
+            <button class="btn-action btn-crear" onclick="openCreateModal()">
+                <span>+</span> Crear
+            </button>
+
+            <!-- Botón para abrir el modal de edición (deshabilitado al inicio) -->
+            <button class="btn-action btn-editar" id="btnEditar" onclick="openEditModal()" disabled>
+                <img src="../assets/img/editar.svg"> Editar
+            </button>
+
+            <!-- Botón para eliminar películas seleccionadas -->
+            <button class="btn-action btn-eliminar" id="btnEliminar" onclick="deleteSelected()" disabled>
+               <img src="../assets/img/eliminar.svg">Eliminar
+            </button>
+
+            <!-- Botón para consultar detalles de la película seleccionada -->
+            <button class="btn-action btn-consultar" id="btnConsultar" onclick="viewSelected()" disabled>
+                <img src="../assets/img/ver.svg"> Consultar
+            </button>
+        </div>
+
+        <!-- Contenedor de la tabla de películas -->
+        <div class="table-container">
+            <table id="tablaPeliculas">
+                <thead>
+                    <tr>
+                        <!-- Checkbox para seleccionar o deseleccionar todas las películas -->
+                        <th class="checkbox-cell">
+                            <input type="checkbox" id="selectAll" onchange="toggleSelectAll()">
+                        </th>
+                        <!-- Encabezados de las columnas -->
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Género</th>
+                        <th>Duración</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaPeliculasBody">
+                    <!-- Aquí se insertan dinámicamente las películas mediante JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal para crear o editar una película -->
+    <div id="movieModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- El título cambia dinámicamente (Crear o Editar) -->
+                <h2 id="modalTitle">Crear Película</h2>
+            </div>
+
+            <!-- Formulario de la película -->
+            <form id="movieForm">
+                <!-- Campo oculto para guardar el ID de la película en caso de edición -->
+                <input type="hidden" id="movieId">
+                
+                <!-- Campo: Nombre -->
+                <div class="form-group">
+                    <label for="movieName">Nombre de la Película *</label>
+                    <input type="text" id="movieName" required placeholder="Ej: Avatar: El Camino del Agua">
+                </div>
+
+                <!-- Campo: Género -->
+                <div class="form-group">
+                    <label for="movieGenre">Género *</label>
+                    <select id="movieGenre" required>
+                        <option value="">Seleccionar género</option>
+                        <!-- Lista de géneros disponibles -->
+                        <option value="Acción">Acción</option>
+                        <option value="Animación">Animación</option>
+                        <option value="Aventura">Aventura</option>
+                        <option value="Ciencia Ficción">Ciencia Ficción</option>
+                        <option value="Comedia">Comedia</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Fantasía">Fantasía</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Superhéroes">Superhéroes</option>
+                        <option value="Suspenso">Suspenso</option>
+                        <option value="Terror">Terror</option>
+                    </select>
+                </div>
+
+                <!-- Campo: Duración -->
+                <div class="form-group">
+                    <label for="movieDuration">Duración (minutos) *</label>
+                    <input type="number" id="movieDuration" required min="1" placeholder="Ej: 120">
+                </div>
+
+                <!-- Campo: Estado (checkbox para indicar si está activa) -->
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" id="movieStatus" checked>
+                        <label for="movieStatus">Película Activa</label>
+                    </div>
+                </div>
+
+                <!-- Botones del modal -->
+                <div class="modal-footer">
+                    <!-- Cierra el modal sin guardar -->
+                    <button type="button" class="btn-modal btn-cancel" onclick="closeModal()">Cancelar</button>
+                    <!-- Envía el formulario -->
+                    <button type="submit" class="btn-modal btn-save">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para ver detalles de una película -->
+    <div id="viewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Detalles de la Película</h2>
+            </div>
+
+            <!-- Aquí se insertan los detalles de la película seleccionada desde el JS -->
+            <div id="movieDetails"></div>
+
+            <div class="modal-footer">
+                <!-- Botón para cerrar el modal de consulta -->
+                <button type="button" class="btn-modal btn-cancel" onclick="closeViewModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts de Bootstrap (funciones dinámicas de componentes como modales) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="../js/peliculas.js"></script>
+</body>
+</html>

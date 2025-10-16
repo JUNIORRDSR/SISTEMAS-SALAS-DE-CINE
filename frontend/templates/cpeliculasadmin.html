@@ -1,75 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Crear Películas</title>
+  <!-- Configuración básica del documento HTML -->
+  <meta charset="UTF-8"> <!-- Define la codificación de caracteres para que soporte acentos y eñes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace el sitio adaptable a móviles -->
+  <title>Crear Películas</title> <!-- Título que aparece en la pestaña del navegador -->
+
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="../css/cpeliculasadmin.css">
 </head>
+
 <body>
-  <!-- HEADER -->
+  <!-- HEADER (barra superior) -->
   <header class="header">
     <div class="header-left">
       <!-- ICONO DEL SISTEMA -->
-      <img src="../assets/img/cineadmin.svg" alt="icono cine">
-      <h5 class="m-0">CineAdmin</h5>
+      <img src="../assets/img/cineadmin.svg" alt="icono cine"> 
+      <h5 class="m-0">CineAdmin</h5> <!-- Nombre del sistema -->
     </div>
 
-    <button class="back-button">
-      <img src="../assets/img/arrow.svg">
-      Atrás
+    <!-- Botón de retroceso que lleva al dashboard del administrador -->
+    <button class="back-button" onclick="window.location.href='dashboardadmin.html'">
+      <img src="../assets/img/arrow.svg"> 
+      Atrás <!-- Texto del botón -->
     </button>
   </header>
 
-  <!-- MAIN -->
+  <!-- MAIN: contenido principal de la página -->
   <main class="container my-5">
+    <!-- Contenedor de la sección del formulario -->
     <div class="form-section mx-auto" style="max-width: 800px;">
+      
+      <!-- Encabezado de la sección -->
       <div class="d-flex justify-content-between align-items-start mb-4">
         <div>
           <h4 class="fw-bold">
             Crear Películas 
-            <image src="../assets/img/entrada.svg">
+            <image src="../assets/img/entrada.svg"> 
           </h4>
-          <p class="text-muted mb-0">añade películas al catálogo de películas del sistema</p>
+          <p class="text-muted mb-0">
+            añade películas al catálogo de películas del sistema
+          </p>
         </div>
       </div>
 
+      <!-- FORMULARIO para crear películas -->
       <form id="formPelicula" class="row g-4">
+        <!-- "row" crea una fila en el grid de Bootstrap
+             "g-4" agrega espacio entre columnas -->
 
         <!-- Columna izquierda -->
         <div class="col-md-6">
+          <!-- Campo: Nombre -->
           <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de la Película:</label>
             <input type="text" id="nombre" class="form-control" required>
           </div>
 
+          <!-- Campo: Género -->
           <div class="mb-3">
             <label for="genero" class="form-label">Género:</label>
             <input type="text" id="genero" class="form-control" required>
           </div>
 
+          <!-- Campo: Duración -->
           <div class="mb-3">
             <label for="duracion" class="form-label">Duración:</label>
             <input type="text" id="duracion" class="form-control" placeholder="Ej: 2h 10min" required>
           </div>
 
+          <!-- Botones de Estado -->
           <div class="mb-3">
             <label class="form-label me-2">Estado:</label>
+            <!-- Botón para marcar la película como activa -->
             <button type="button" id="btnActivo" class="estado-btn activo me-2">Activo</button>
+            <!-- Botón para marcar la película como inactiva -->
             <button type="button" id="btnInactivo" class="estado-btn inactivo">Inactivo</button>
           </div>
         </div>
 
         <!-- Columna derecha -->
         <div class="col-md-6">
+          <!-- Subir imagen de la película -->
           <label class="form-label">Insertar Imagen</label>
           <div class="upload-box" id="uploadBox">
-            <img src="../assets/img/subir.svg" alt="Subir imagen">
+            <img src="../assets/img/subir.svg" alt="Subir imagen"> <!-- Icono de carga -->
           </div>
+          <!-- Input oculto para seleccionar imagen desde el PC -->
           <input type="file" id="imagen" accept="image/*" class="d-none">
         </div>
 
+        <!-- Botón para enviar el formulario -->
         <div class="col-12 text-center mt-4">
           <button type="submit" class="btn btn-crear">Crear</button>
         </div>
@@ -77,8 +100,11 @@
     </div>
   </main>
 
+  <!-- Scripts al final del body -->
+  <!-- Script de Bootstrap para funcionalidades como modales, menús, etc. -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/cpeliculasadmin.js"></script>
 
+  <!-- Script propio con la lógica de la página (interactividad del formulario) -->
+  <script src="../js/cpeliculasadmin.js"></script>
 </body>
 </html>

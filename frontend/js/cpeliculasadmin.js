@@ -1,32 +1,45 @@
- 
-    // ===============================
-    // FUNCIONALIDAD DEL FORMULARIO
-    // ===============================
+// FUNCIONALIDAD DEL FORMULARIO
 
-    const uploadBox = document.getElementById('uploadBox');
-    const inputImagen = document.getElementById('imagen');
-    const btnActivo = document.getElementById('btnActivo');
-    const btnInactivo = document.getElementById('btnInactivo');
-    let estado = "Activo";
+// Se obtienen los elementos del DOM (HTML) que se van a manipular
+const uploadBox = document.getElementById('uploadBox'); // Cuadro donde se mostrará la imagen o el ícono de subir
+const inputImagen = document.getElementById('imagen');   // Input oculto para seleccionar archivos de imagen
+const btnActivo = document.getElementById('btnActivo');   // Botón para marcar la película como activa
+const btnInactivo = document.getElementById('btnInactivo'); // Botón para marcar la película como inactiva
 
-    // Simular click en input file
-    uploadBox.addEventListener('click', () => inputImagen.click());
+// Variable para guardar el estado de la película
+let estado = "Activo"; // Por defecto el estado inicial es “Activo”
 
-    // Mostrar vista previa de la imagen
-    inputImagen.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          uploadBox.innerHTML = `<img src="${event.target.result}" alt="Vista previa" style="max-height:140px; border-radius:8px;">`;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
+// SUBIR IMAGEN
 
-  // Cambiar estado activo / inactivo
+// Cuando el usuario hace clic en el cuadro de carga (uploadBox),
+// se simula un clic en el input file oculto, para abrir el explorador de archivos.
+uploadBox.addEventListener('click', () => inputImagen.click());
+
+// Cuando el usuario selecciona una imagen, se activa este evento
+inputImagen.addEventListener('change', (e) => {
+  const file = e.target.files[0]; // Obtiene el primer archivo seleccionado
+  if (file) { // Si existe un archivo...
+    const reader = new FileReader(); // Crea un lector de archivos
+    // Cuando el archivo se termina de leer, se ejecuta esta función
+    reader.onload = (event) => {
+      // Reemplaza el contenido del cuadro con la vista previa de la imagen cargada
+      uploadBox.innerHTML = `
+        <img src="${event.target.result}" 
+             alt="Vista previa" 
+             style="max-height:140px; border-radius:8px;">
+      `;
+    };
+    // Lee el archivo como una URL base64 para mostrarlo en pantalla 
+    reader.readAsDataURL(file);
+  }
+});
+
+// CAMBIAR ESTADO ACTIVO / INACTIVO
+
+// Si el usuario hace clic en el botón "Activo"
 btnActivo.addEventListener('click', () => {
-  estado = "Activo";
+  estado = "Activo"; // Cambia el valor de la variable de estado
+  // Cambia las clases CSS para mostrar visualmente cuál botón está activo
   btnActivo.classList.add('activo');
   btnActivo.classList.remove('inactivo');
 
@@ -34,8 +47,10 @@ btnActivo.addEventListener('click', () => {
   btnInactivo.classList.remove('activo');
 });
 
+// Si el usuario hace clic en el botón "Inactivo"
 btnInactivo.addEventListener('click', () => {
-  estado = "Inactivo";
+  estado = "Inactivo"; // Cambia el valor de la variable de estado
+  // Cambia las clases CSS para actualizar el aspecto visual de los botones
   btnInactivo.classList.add('activo');
   btnInactivo.classList.remove('inactivo');
 
@@ -43,18 +58,29 @@ btnInactivo.addEventListener('click', () => {
   btnActivo.classList.remove('activo');
 });
 
+// ENVÍO DEL FORMULARIO
 
-    // Manejar envío del formulario
-    document.getElementById('formPelicula').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const pelicula = {
-        nombre: document.getElementById('nombre').value,
-        genero: document.getElementById('genero').value,
-        duracion: document.getElementById('duracion').value,
-        estado: estado
-      };
-      console.log("🎬 Película creada:", pelicula);
-      alert("Película registrada con éxito 🎉");
-      e.target.reset();
-      uploadBox.innerHTML = '<img src="../assets/img/subir.svg" alt="Subir imagen">';
-    });
+// Escucha el evento "submit" (cuando se presiona el botón "Crear")
+document.getElementById('formPelicula').addEventListener('submit', (e) => {
+  e.preventDefault(); // Evita que la página se recargue automáticamente
+
+  // Crea un objeto con los datos ingresados por el usuario
+  const pelicula = {
+    nombre: document.getElementById('nombre').value,
+    genero: document.getElementById('genero').value,
+    duracion: document.getElementById('duracion').value,
+    estado: estado // Usa el valor de la variable "estado" (Activo o Inactivo)
+  };
+
+  // Muestra en consola los datos de la película creada
+  console.log("Película creada:", pelicula);
+
+  // Muestra un mensaje de confirmación
+  alert("Película registrada con éxito ");
+
+  // Limpia el formulario para poder ingresar otra película
+  e.target.reset();
+
+  // Restaura el cuadro de carga con el ícono original
+  uploadBox.innerHTML = '<img src="../assets/img/subir.svg" alt="Subir imagen">';
+});

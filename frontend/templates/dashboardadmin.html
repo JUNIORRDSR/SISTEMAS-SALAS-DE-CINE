@@ -1,104 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CineAdmin - Panel de Administración</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-     <link rel="stylesheet" href="../css/dashboardadmin.css">
+    <meta charset="UTF-8"> <!-- Codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea adaptable a móviles -->
+    <title>CineAdmin - Panel de Administración</title> <!-- Título del documento -->
 
+    <!-- Bootstrap CSS para estructura y componentes -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS personalizado del dashboard -->
+    <link rel="stylesheet" href="../css/dashboardadmin.css">
 </head>
+
 <body>
-    <!-- Sidebar -->
+    <!-- ======= SIDEBAR (barra lateral) ======= -->
     <aside class="sidebar">
         <div class="sidebar-header">
+            <!-- Contenedor del logo -->
             <div class="logo-container">
                 <div class="logo-icon">
-                     <img src="../assets/img/logoa.svg">
+                     <img src="../assets/img/logoa.svg"> <!-- Icono o logo del sistema -->
                 </div>
                 <div class="logo-text">
-                    <h3>CineAdmin</h3>
-                    <p>Panel de Control</p>
+                    <h3>CineAdmin</h3> <!-- Nombre del panel -->
+                    <p>Panel de Control</p> <!-- Descripción corta -->
                 </div>
             </div>
         </div>
 
+        <!-- Sección: Gestión Principal -->
         <div class="sidebar-section-title">Gestión Principal</div>
         <ul class="sidebar-menu">
+            <!-- Opción: Cartelera -->
             <li>
                 <a href="#" class="active">
-                    <span class="menu-icon"> <img src="../assets/img/entradita.svg"> </span>
+                    <span class="menu-icon"><img src="../assets/img/entradita.svg"></span>
                     Cartelera
-                    <span class="badge-cajero">Cajero</span>
+                    <span class="badge-cajero">Cajeros</span> <!-- Etiqueta decorativa -->
                 </a>
             </li>
+
+            <!-- Opción: Películas -->
             <li>
-                <a href="#">
-                    <span class="menu-icon"> <img src="../assets/img/camara.svg"> </span>
+                <a href="#" onclick="window.location.href='peliculas.html'">
+                    <span class="menu-icon"><img src="../assets/img/camara.svg"></span>
                     Películas
                 </a>
             </li>
+
+            <!-- Opción: Clientes-->
             <li>
-                <a href="">
-                    <span class="menu-icon"><img src="../assets/img/cliente.svg"> </span>
+                <a href="#" onclick="window.location.href='clientes.html'">
+                    <span class="menu-icon"><img src="../assets/img/cliente.svg"></span>
                     Clientes VIP
                 </a>
             </li>
+
+            <!-- Opción: Cajeros -->
             <li>
-                <a href="#">
-                    <span class="menu-icon"> <img src="../assets/img/cajeros.svg"></span>
+                <a href="#" onclick="window.location.href='cajeros.html'">
+                    <span class="menu-icon"><img src="../assets/img/cajeros.svg"></span>
                     Cajeros
                 </a>
             </li>
         </ul>
 
+        <!-- Sección: Análisis -->
         <div class="sidebar-section-title">Análisis</div>
         <ul class="sidebar-menu">
+            <!-- Opción: Reportes de Ventas -->
             <li>
                 <a href="#">
-                    <span class="menu-icon"><img src="../assets/img/ventas.svg"> </span>
+                    <span class="menu-icon"><img src="../assets/img/ventas.svg"></span>
                     Reportes de Ventas
                 </a>
             </li>
+
+            <!-- Opción: Log de Usuarios -->
             <li>
                 <a href="#">
-                    <span class="menu-icon"><img src="../assets/img/log.svg"> </span>
+                    <span class="menu-icon"><img src="../assets/img/log.svg"></span>
                     Log de Usuarios
                 </a>
             </li>
         </ul>
 
+        <!-- Sección inferior con el usuario y el botón de salir -->
         <div class="sidebar-footer">
             <div class="user-profile">
                 <div class="user-avatar">
-
+                    <!-- Aquí podrías colocar una foto o ícono del administrador -->
                 </div>
                 <div class="user-info">
-                    <h4>Admin Principal</h4>
-                    <p>En línea</p>
+                    <h4>Admin Principal</h4> <!-- Nombre del usuario -->
+                    <p>En línea</p> <!-- Estado -->
                 </div>
-                <button class="logout-btn" title="Cerrar sesión">
+
+                <!-- Botón para cerrar sesión -->
+                <button class="logout-btn" title="Cerrar sesión" onclick="window.location.href='login.html'">
                     <img src="../assets/img/salir.svg">
                 </button>
             </div>
         </div>
     </aside>
 
-    <!-- Main Content -->
+    <!-- ======= CONTENIDO PRINCIPAL ======= -->
     <main class="main-content">
         <div class="page-header">
             <h1>Panel de Administración</h1>
             <p>Gestiona tu cine de manera eficiente</p>
         </div>
 
-        <!--  Banner Bienvenida -->
+        <!-- Banner de bienvenida -->
         <div class="welcome-banner">
             <h2>¡Bienvenido Administrador!</h2>
             <p>Gestiona tu cine con herramientas avanzadas y reportes detallados</p>
         </div>
 
-        <!-- Stats Cards -->
+        <!-- ======= TARJETAS DE ESTADÍSTICAS ======= -->
         <div class="stats-container">
+            <!-- Ventas del día -->
             <div class="stat-card">
                 <div class="stat-info">
                     <h3>Ventas Hoy</h3>
@@ -109,6 +130,7 @@
                 </div>
             </div>
 
+            <!-- Tickets vendidos -->
             <div class="stat-card">
                 <div class="stat-info">
                     <h3>Tickets Vendidos</h3>
@@ -119,6 +141,7 @@
                 </div>
             </div>
 
+            <!-- Clientes VIP -->
             <div class="stat-card">
                 <div class="stat-info">
                     <h3>Clientes VIP</h3>
@@ -129,6 +152,7 @@
                 </div>
             </div>
 
+            <!-- Cajeros activos -->
             <div class="stat-card">
                 <div class="stat-info">
                     <h3>Cajeros Activos</h3>
@@ -140,22 +164,24 @@
             </div>
         </div>
 
-        <!-- Action Cards and Activity -->
+        <!-- ======= ACCIONES RÁPIDAS Y ACTIVIDAD ======= -->
         <div class="content-grid">
-            <!-- Acceso rápido -->
+            
+            <!-- Sección de acciones rápidas -->
             <div class="action-card">
                 <h3 class="card-title">Acciones Rápidas</h3>
                 
-                <div class="action-item">
+                <!-- Agregar nueva película -->
+                <div class="action-item" onclick="window.location.href='cpeliculasadmin.html'">
                     <div class="action-icon blue">
-                        <!-- Icono agregar película -->
                         <img src="../assets/img/add.svg">
                     </div>
                     <div class="action-text">Agregar Nueva Película</div>
                     <div class="action-arrow">›</div>
                 </div>
 
-                <div class="action-item" >
+                <!-- Programar funciones -->
+                <div class="action-item">
                     <div class="action-icon blue">
                         <img src="../assets/img/calendario.svg">
                     </div>
@@ -163,7 +189,8 @@
                     <div class="action-arrow">›</div>
                 </div>
 
-                <div class="action-item"  onclick="window.location.href='cajeros.html'">
+                <!-- Registrar cajero -->
+                <div class="action-item" onclick="window.location.href='cajeros.html'">
                     <div class="action-icon purple">
                         <img src="../assets/img/register.svg">
                     </div>
@@ -172,13 +199,13 @@
                 </div>
             </div>
 
-            <!-- Recent Activity -->
+            <!-- Sección de actividad reciente -->
             <div class="activity-card">
                 <h3 class="card-title">Actividad Reciente</h3>
                 
+                <!-- Actividad: venta de tickets -->
                 <div class="activity-item">
                     <div class="activity-icon blue">
-                        <!-- Icono ticket -->
                         <img src="../assets/img/eazul.svg">
                     </div>
                     <div class="activity-info">
@@ -187,9 +214,9 @@
                     </div>
                 </div>
 
+                <!-- Actividad: nuevo cliente  -->
                 <div class="activity-item">
                     <div class="activity-icon green">
-                        <!-- Icono corona -->
                         <img src="../assets/img/vipverde.svg">
                     </div>
                     <div class="activity-info">
@@ -198,9 +225,9 @@
                     </div>
                 </div>
 
+                <!-- Actividad: película actualizada -->
                 <div class="activity-item">
                     <div class="activity-icon purple">
-                        <!-- Icono película -->
                         <img src="../assets/img/camaramorada.svg">
                     </div>
                     <div class="activity-info">
@@ -212,9 +239,10 @@
         </div>
     </main>
 
+    <!-- Scripts de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/dashboard.js">
-        
 
+    <!-- Script Js -->
+    <script src="../js/dashboard.js"></script>
 </body>
 </html>

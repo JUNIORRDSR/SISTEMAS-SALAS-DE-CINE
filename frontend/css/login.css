@@ -1,29 +1,27 @@
 body {
-  background-color: #f8f9fa;
+  background-color: #f8f9fa; /* Fondo claro */
 }
 
 .login-card {
   width: 350px;
-  border: 2px solid #007bff;
-  border-radius: 10px;
+  border: 2px solid #007bff; /* Borde azul */
+  border-radius: 10px;       /* Bordes redondeados */
 }
 
 .input-group-text {
-  border-right: none;
+  border-right: none; /* Quita la línea del borde derecho */
 }
 
 .form-control:focus {
-  box-shadow: none;
-  border-color: #007bff;
+  box-shadow: none;          /* Elimina el brillo al hacer focus */
+  border-color: #007bff;     /* Borde azul al seleccionar */
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #007bff, #0056d2);
+  background: linear-gradient(90deg, #007bff, #0056d2); /* Degradado azul */
   border: none;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(90deg, #0056d2, #003da8);
+  background: linear-gradient(90deg, #0056d2, #003da8); /* Degradado más oscuro al pasar el mouse */
 }
-
-
