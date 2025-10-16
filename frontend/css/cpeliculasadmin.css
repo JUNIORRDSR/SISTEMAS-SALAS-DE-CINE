@@ -1,0 +1,141 @@
+body {
+  background-color: #f8fafc;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #0f172a;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 12px 20px;
+  transition: 0.3s;
+}
+
+.menu li:hover,
+.menu li.active {
+  background-color: #1e293b;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile {
+  padding: 15px 20px;
+  border-top: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.status {
+  font-size: 0.8rem;
+  color: #9ca3af;
+}
+
+/* Main */
+main {
+  margin-left: 260px;
+  padding: 25px;
+  width: calc(100% - 260px);
+}
+
+.main-header {
+  margin-bottom: 15px;
+}
+
+/* Welcome */
+.welcome-card {
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+/* Stats Cards */
+.stats-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.icon-box {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+/* Cards */
+.card-custom {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.action-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+}
+
+.action-item:last-child {
+  border-bottom: none;
+}
+
+.activity-item {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.activity-item.blue { background-color: #e0f2fe; color: #0369a1; }
+.activity-item.green { background-color: #dcfce7; color: #166534; }
+.activity-item.purple { background-color: #f3e8ff; color: #6b21a8; }

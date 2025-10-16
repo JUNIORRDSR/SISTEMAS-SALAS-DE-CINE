@@ -98,7 +98,7 @@ function renderPaginacion() {
   }
 }
 
-// 🔹 Editar cliente
+//Editar cliente
 function editarCliente(index) {
   const cliente = clientes[index];
   formCliente.nombre.value = cliente.nombre;

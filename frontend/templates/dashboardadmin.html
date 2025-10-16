@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineAdmin - Panel de Administración</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="../css/dashboardadmin.css">
+
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                     <img src="../assets/img/logoa.svg">
+                </div>
+                <div class="logo-text">
+                    <h3>CineAdmin</h3>
+                    <p>Panel de Control</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-section-title">Gestión Principal</div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#" class="active">
+                    <span class="menu-icon"> <img src="../assets/img/entradita.svg"> </span>
+                    Cartelera
+                    <span class="badge-cajero">Cajero</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="menu-icon"> <img src="../assets/img/camara.svg"> </span>
+                    Películas
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <span class="menu-icon"><img src="../assets/img/cliente.svg"> </span>
+                    Clientes VIP
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="menu-icon"> <img src="../assets/img/cajeros.svg"></span>
+                    Cajeros
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-section-title">Análisis</div>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <span class="menu-icon"><img src="../assets/img/ventas.svg"> </span>
+                    Reportes de Ventas
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="menu-icon"><img src="../assets/img/log.svg"> </span>
+                    Log de Usuarios
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">
+
+                </div>
+                <div class="user-info">
+                    <h4>Admin Principal</h4>
+                    <p>En línea</p>
+                </div>
+                <button class="logout-btn" title="Cerrar sesión">
+                    <img src="../assets/img/salir.svg">
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <h1>Panel de Administración</h1>
+            <p>Gestiona tu cine de manera eficiente</p>
+        </div>
+
+        <!--  Banner Bienvenida -->
+        <div class="welcome-banner">
+            <h2>¡Bienvenido Administrador!</h2>
+            <p>Gestiona tu cine con herramientas avanzadas y reportes detallados</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Ventas Hoy</h3>
+                    <div class="stat-value">$12,450</div>
+                </div>
+                <div class="stat-icon green">
+                    <img src="../assets/img/peso.svg">
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Tickets Vendidos</h3>
+                    <div class="stat-value">248</div>
+                </div>
+                <div class="stat-icon blue">
+                    <img src="../assets/img/eazul.svg">
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Clientes VIP</h3>
+                    <div class="stat-value">89</div>
+                </div>
+                <div class="stat-icon yellow">
+                    <img src="../assets/img/coronitvip.svg">
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-info">
+                    <h3>Cajeros Activos</h3>
+                    <div class="stat-value">6</div>
+                </div>
+                <div class="stat-icon blue">
+                    <img src="../assets/img/cactivos.svg">
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Cards and Activity -->
+        <div class="content-grid">
+            <!-- Acceso rápido -->
+            <div class="action-card">
+                <h3 class="card-title">Acciones Rápidas</h3>
+                
+                <div class="action-item">
+                    <div class="action-icon blue">
+                        <!-- Icono agregar película -->
+                        <img src="../assets/img/add.svg">
+                    </div>
+                    <div class="action-text">Agregar Nueva Película</div>
+                    <div class="action-arrow">›</div>
+                </div>
+
+                <div class="action-item" >
+                    <div class="action-icon blue">
+                        <img src="../assets/img/calendario.svg">
+                    </div>
+                    <div class="action-text">Programar Funciones</div>
+                    <div class="action-arrow">›</div>
+                </div>
+
+                <div class="action-item"  onclick="window.location.href='cajeros.html'">
+                    <div class="action-icon purple">
+                        <img src="../assets/img/register.svg">
+                    </div>
+                    <div class="action-text">Registrar Cajero</div>
+                    <div class="action-arrow">›</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-card">
+                <h3 class="card-title">Actividad Reciente</h3>
+                
+                <div class="activity-item">
+                    <div class="activity-icon blue">
+                        <!-- Icono ticket -->
+                        <img src="../assets/img/eazul.svg">
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">Venta de 15 tickets</div>
+                        <div class="activity-time">Hace 5 minutos</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon green">
+                        <!-- Icono corona -->
+                        <img src="../assets/img/vipverde.svg">
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">Nuevo cliente VIP</div>
+                        <div class="activity-time">Hace 12 minutos</div>
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon purple">
+                        <!-- Icono película -->
+                        <img src="../assets/img/camaramorada.svg">
+                    </div>
+                    <div class="activity-info">
+                        <div class="activity-title">Película actualizada</div>
+                        <div class="activity-time">Hace 25 minutos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/dashboard.js">
+        
+
+</body>
+</html>
